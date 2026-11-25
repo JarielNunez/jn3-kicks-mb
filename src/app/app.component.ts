@@ -17,20 +17,11 @@ import {
 } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
-  heartOutline,
-  heartSharp,
-  archiveOutline,
-  archiveSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
-  bookmarkOutline,
-  bookmarkSharp,
+  storefrontOutline, storefrontSharp,
+  calendarOutline, calendarSharp,
+  personOutline, personSharp,
+  chatbubblesOutline, chatbubblesSharp,
+  informationCircleOutline, informationCircleSharp,
 } from 'ionicons/icons';
 
 @Component({
@@ -57,30 +48,20 @@ import {
 })
 export class AppComponent {
   protected readonly appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Catálogo', url: '/catalogo', icon: 'storefront' },
+    { title: 'Mis reservas', url: '/reservas', icon: 'calendar' },
+    { title: 'Perfil', url: '/folder/Perfil', icon: 'person' },
+    { title: 'Contacto', url: '/folder/Contacto', icon: 'chatbubbles' },
+    { title: 'Sobre JN3 KICKS', url: '/folder/Nosotros', icon: 'information-circle' },
   ];
-  protected readonly labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
   constructor() {
     addIcons({
-      mailOutline,
-      mailSharp,
-      paperPlaneOutline,
-      paperPlaneSharp,
-      heartOutline,
-      heartSharp,
-      archiveOutline,
-      archiveSharp,
-      trashOutline,
-      trashSharp,
-      warningOutline,
-      warningSharp,
-      bookmarkOutline,
-      bookmarkSharp,
+      storefrontOutline, storefrontSharp,
+      calendarOutline, calendarSharp,
+      personOutline, personSharp,
+      chatbubblesOutline, chatbubblesSharp,
+      informationCircleOutline, informationCircleSharp,
     });
   }
 }

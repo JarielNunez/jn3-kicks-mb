@@ -1,0 +1,7 @@
+{
+  "name": "jn3-kicks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

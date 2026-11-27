@@ -1,15 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular';
+import { RouterLink } from '@angular/router';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonRefresher,
+  IonRefresherContent,
+  RefresherCustomEvent,
+} from '@ionic/angular';
+import { PRODUCTOS, Producto } from '../../data/productos';
+
 @Component({
   selector: 'app-catalogo',
   templateUrl: './catalogo.page.html',
   styleUrls: ['./catalogo.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, CommonModule, FormsModule],
+  imports: [
+    IonRefresher,
+    IonRefresherContent,
+    CommonModule,
+    RouterLink,
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent,
+  ],
 })
-export class CatalogoPage implements OnInit {
-  constructor() {}
+export class CatalogoPage {
+  productos: Producto[] = PRODUCTOS;
 
-  ngOnInit() {}
+  refrescar(event: RefresherCustomEvent) {
+    setTimeout(() => {
+      this.productos = [...this.productos].reverse();
+      event.target.complete();
+    }, 1500);
+  }
 }

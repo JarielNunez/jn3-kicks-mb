@@ -15,8 +15,9 @@ import {
   IonCardContent,
   IonRefresher,
   IonRefresherContent,
-  RefresherCustomEvent,
-} from '@ionic/angular';
+  RefresherCustomEvent, IonFab, IonFabButton, IonIcon, IonFabList } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { add, calendar, logoWhatsapp } from 'ionicons/icons';
 import { PRODUCTOS, Producto } from '../../data/productos';
 
 @Component({
@@ -39,11 +40,19 @@ import { PRODUCTOS, Producto } from '../../data/productos';
     IonCardTitle,
     IonCardSubtitle,
     IonCardContent,
+    IonFab,
+    IonFabButton,
+    IonFabList,
+    IonIcon,
   ],
+  
 })
 export class CatalogoPage {
   productos: Producto[] = PRODUCTOS;
 
+  constructor() {
+  addIcons({ add, calendar, logoWhatsapp });
+}
   refrescar(event: RefresherCustomEvent) {
     setTimeout(() => {
       this.productos = [...this.productos].reverse();

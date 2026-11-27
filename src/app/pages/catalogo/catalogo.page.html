@@ -24,7 +24,7 @@
 
   <div class="grilla">
     @for (p of productos; track p.id) {
-      <ion-card [routerLink]="['/detalle', p.id]">
+      <ion-card #tarjeta [attr.data-id]="p.id" (click)="abrir(p)">
         <img [src]="p.imagen" [alt]="p.nombre" />
         <ion-card-header>
           <ion-card-subtitle>ORIGINAL GARANTIZADO</ion-card-subtitle>

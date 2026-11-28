@@ -1,13 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/catalogo"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  @if (producto; as p) {
+    <ion-card>
+      <div class="zoom">
+        <img #fotoTenis [src]="p.imagen" [alt]="p.nombre" />
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle>ORIGINAL GARANTIZADO</ion-card-subtitle>
+        <ion-card-title>{{ p.nombre }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>RD$ {{ p.precio | number }}</ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Talla</ion-label>
+        @for (t of p.tallas; track t) {
+          <ion-chip [color]="t === tallaElegida ? 'dark' : 'medium'" (click)="tallaElegida = t">{{ t }}</ion-chip>
+        }
+      </ion-item>
+      <ion-item>
+        <ion-label>Depósito (20%)</ion-label>
+        <ion-note slot="end">RD$ {{ p.precio * 0.2 | number }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Restante al recibir</ion-label>
+        <ion-note slot="end">RD$ {{ p.precio * 0.8 | number }}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button color="dark" routerLink="/reservas">
+        <ion-icon name="calendar"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  } @else {
+    <p class="ion-padding">Producto no encontrado.</p>
+  }
 </ion-content>

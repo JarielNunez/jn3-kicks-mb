@@ -1,0 +1,17 @@
+.zoom {
+  height: 280px;
+  overflow: hidden;
+  background: #f5f5f5;
+  touch-action: none;
+}
+
+.zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s;
+}
+
+ion-list {
+  margin-bottom: 80px;
+}

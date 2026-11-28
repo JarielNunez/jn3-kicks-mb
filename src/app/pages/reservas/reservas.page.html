@@ -1,13 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>reservas</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mis reservas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">reservas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content
+      pullingText="Desliza para actualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Cargando reservas..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    @for (r of reservas; track r.id) {
+      <ion-item-sliding #fila (ionSwipe)="eliminar(r.id)">
+        <ion-item (click)="fila.open('end')">
+          <ion-thumbnail slot="start">
+            <img [src]="r.producto.imagen" [alt]="r.producto.nombre" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ r.producto.nombre }} · Talla {{ r.talla }}</h2>
+            <p>Total: RD$ {{ r.producto.precio | number }}</p>
+            <p>Depósito 20%: RD$ {{ r.producto.precio * 0.2 | number }}</p>
+            <p>Restante: RD$ {{ r.producto.precio * 0.8 | number }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="eliminar(r.id)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    } @empty {
+      <ion-item>
+        <ion-label>No tienes reservas. Desliza hacia abajo para recargar.</ion-label>
+      </ion-item>
+    }
+  </ion-list>
 </ion-content>

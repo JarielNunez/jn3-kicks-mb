@@ -37,6 +37,12 @@
       </ion-item>
     </ion-list>
 
+    <div class="boton-reservar">
+  <ion-button expand="block" color="dark" shape="round" [disabled]="!tallaElegida" (click)="reservarPorWhatsApp(p)">
+    Reservar con 20% · RD$ {{ p.precio * 0.2 | number }}
+  </ion-button>
+</div>
+
     <ion-fab slot="fixed" vertical="bottom" horizontal="end">
       <ion-fab-button color="dark" routerLink="/reservas">
         <ion-icon name="calendar"></ion-icon>
